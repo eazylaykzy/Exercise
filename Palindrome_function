@@ -1,0 +1,32 @@
+def isPalindrome1(s):
+    """Assumes s is an str
+    Returns True if s is a palindrome and False otherwise.
+     Punctuation marks, blanks, and capitalization are
+     ignore."""
+
+    def toChars(s):
+        s = s.lower()
+        ans = ''
+        for c in s:
+            if c in 'abcdefghijklmnopqrstuvwxyz':
+                ans = ans + c
+        return ans
+
+    def isPal(s):
+        print ' isPal called with', s
+        if len(s) <= 1:
+            print ' About to return True from base case'
+            return True
+        else:
+            ans = s[0] == s[-1] and isPal(s[1:-1])
+            print ' About to return', ans, 'for', s
+            return ans
+        
+    return isPal(toChars(s))
+
+def testIsPalindrome1():
+    print 'Try doGod'
+    print isPalindrome1('dogGod')
+    print 'Try doGood'
+    print isPalindrome1('doGood')
+
